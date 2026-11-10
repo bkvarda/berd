@@ -101,3 +101,5 @@ jobs:
             release/windows/Berd-unsigned-setup.exe
           if-no-files-found: error
           retention-days: 7
+
+# Fork dispatch registration marker.
