@@ -70,8 +70,12 @@ jobs:
           VERSION: 0.0.0-unsigned
           BUILD_KIND: official
           BERD_RELEASE_CHANNEL: disabled
+          OPENSSL_ROOT_DIR: /opt/homebrew/opt/openssl@3
+          CMAKE_PREFIX_PATH: /opt/homebrew/opt/openssl@3
+          PKG_CONFIG_PATH: /opt/homebrew/opt/openssl@3/lib/pkgconfig
         run: |
           set -euo pipefail
+          brew install openssl@3
           scripts/release/build-macos.sh
           codesign --force --deep --sign - release/macos/Berd.app
           codesign --verify --deep --strict --verbose=2 release/macos/Berd.app
